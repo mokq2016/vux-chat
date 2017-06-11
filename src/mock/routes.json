@@ -1,0 +1,4 @@
+{
+    "/api/:category/:resource": "/:category/:resource",
+    "/api/:category/:resource/:id": "/:category_:resource/:id"
+}
