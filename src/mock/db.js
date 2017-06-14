@@ -1,5 +1,5 @@
-let Mock = require('mockjs');
-let Random = Mock.Random;
+var Mock = require('mockjs');
+var Random = Mock.Random;
 const DEFAULTS = {
     "returnCode": "00000000",
     "data": [],

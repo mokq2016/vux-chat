@@ -61,6 +61,11 @@ export default {
 			{name:123},
 		]
 		}	
+	},
+	created (){
+		this.$http.post("api/news/2",{data:1}).then(data => {
+			console.log(data)
+		})
 	}
 }
 </script>

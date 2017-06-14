@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { ToastPlugin, AlertPlugin,ConfirmPlugin   } from 'vux'
-/*import { Promise } from 'es6-promise';*/
+import { Promise } from 'es6-promise';
 
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
@@ -34,13 +34,14 @@ Message.install = () => {
 			}
 		},
 		$confirm: config => {
+			let isConfirm = false;
 			let def = {
 				title:'提示',
 				content:'请设置提示内容到content属性',
 				confirmText:'确定',
 				cancelText:'取消',
 				onConfirm:() =>{
-					
+					isConfirm = true;
 				}
 			}
 			if(typeof  config  === 'string' || typeof  config  === 'number'){
@@ -48,6 +49,11 @@ Message.install = () => {
 			}else{
 				Vue.$vux.confirm.show(Object.assign(def,config));
 			}
+			/*return new Promise((resolve,reject) => {
+				if(isConfirm){
+					resolve();
+				}
+			})*/
 		}
 
 

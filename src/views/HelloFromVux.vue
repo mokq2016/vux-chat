@@ -7,6 +7,7 @@
     <group title="cell demo">
       <cell title="Vux" value="Cool" is-link></cell>
     </group>
+    <v-footbar></v-footbar>
   </div>
 </template>
 

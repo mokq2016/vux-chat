@@ -7,6 +7,7 @@ import router from './router'
 import components from './components/' // 加载公共组件
 import './iconfont/iconfont.css'
 import Msg from './common/Msg.js' 
+import http from './common/http' 
 
 Object.keys(components).forEach((key) => {
   var name = key.replace(/(\w)/, (v) => v.toUpperCase()) // 首字母大写

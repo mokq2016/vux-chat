@@ -78,7 +78,9 @@ export default {
 	},
 	methods:{
 		showMsg (){
-			this.$confirm({title:'你好',content:'<span>123</span>'})
+			this.$confirm({title:'你好',content:'<span>123</span>'}).then(function(){
+				console.log(13)
+			})
 			console.log(11)
 		}
 	}
