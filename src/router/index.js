@@ -20,6 +20,10 @@ export default new VueRouter({
     {
       path: '/contacts',
       component: resolve => require(['../views/Contacts.vue'],resolve)
+    },
+    {
+      path: '/register',
+      component: resolve => require(['../views/register/register.vue'],resolve)
     }
   ]
 })

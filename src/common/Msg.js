@@ -1,10 +1,11 @@
 import Vue from 'vue'
-import { ToastPlugin, AlertPlugin,ConfirmPlugin   } from 'vux'
+import { ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin    } from 'vux'
 import { Promise } from 'es6-promise';
 
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
+Vue.use(LoadingPlugin)
 
 const Message = {};
 Message.install = () => {
@@ -54,8 +55,17 @@ Message.install = () => {
 					resolve();
 				}
 			})*/
+		},
+		$showLoading: config => {
+			let def = {
+				text: '拼命请求中...'
+			}
+			if(typeof  config  === 'string' || typeof  config  === 'number'){
+				Vue.$vux.loading.show(Object.assign(def,{text:config}));
+			}else{
+				Vue.$vux.loading.show(Object.assign(def,config));
+			}
 		}
-
 
 	}
 	Object.entries(msg).forEach(([method,fn]) => {

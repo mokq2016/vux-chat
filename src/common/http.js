@@ -11,15 +11,21 @@ Axios.interceptors.request.use(function (config) {
         config['method'] = 'GET';
         console.log(config)
     }
+    Vue.prototype.$showLoading();
     return config;
   }, function (error) {
     // Do something with request error 
+    Vue.$vux.loading.hide()
     return Promise.reject(error);
   });
 
 Axios.interceptors.response.use(
-    response => response.data,
+    response => {
+        Vue.$vux.loading.hide();
+        response.data
+    },
     error => {
+        Vue.$vux.loading.hide();
         if (error.response) {
             switch (error.response.status) {
                 case 404:
