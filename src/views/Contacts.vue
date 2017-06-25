@@ -48,31 +48,7 @@ export default {
 	data (){
 		return {
 			title:'sss',
-			groups:[{
-				name:'A',
-				items:[
-					{'name':122},
-					{name:122},
-					{name:122},
-				]
-			},
-			{
-				name:'A',
-				items:[
-					{name:122},
-					{name:122},
-					{name:122},
-				]
-			},
-			{
-				name:'C',
-				items:[
-					{name:122},
-					{name:122},
-					{name:122},
-				]
-			}
-			]
+			groups:[]
 
 		}	
 	},
@@ -83,6 +59,15 @@ export default {
 			})
 			console.log(11)
 		}
+	},
+	created(){
+		this.$http("/api/common/getUsers").then((result) => {
+			if(result.success){
+				this.$data.groups = result.groups;
+			}else{
+				this.$alert(result.message);
+			}
+		})
 	}
 	
 }

@@ -63,9 +63,9 @@ export default {
 		}	
 	},
 	created (){
-		this.$http.post("api/news/2",{data:1}).then(data => {
+		/*this.$http.post("api/news/2",{data:1}).then(data => {
 			console.log(data)
-		})
+		})*/
 	}
 }
 </script>

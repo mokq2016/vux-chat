@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 export default new VueRouter({
   routes: [
     {
-      path: '/',
+      path: '/home',
       component: resolve => require(['../views/Home.vue'],resolve)
     },
     {
@@ -24,6 +24,10 @@ export default new VueRouter({
     {
       path: '/register',
       component: resolve => require(['../views/register/register.vue'],resolve)
+    },
+    {
+      path: '/login',
+      component: resolve => require(['../views/login/login.vue'],resolve)
     }
   ]
 })

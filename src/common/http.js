@@ -22,7 +22,7 @@ Axios.interceptors.request.use(function (config) {
 Axios.interceptors.response.use(
     response => {
         Vue.$vux.loading.hide();
-        response.data
+        return response.data;
     },
     error => {
         Vue.$vux.loading.hide();

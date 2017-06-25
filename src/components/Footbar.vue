@@ -1,7 +1,7 @@
 <template>
 	<div>
 	<tabbar>
-      <tabbar-item :class="{'weui-bar__item_on':$route.path == '/'}" link="/">
+      <tabbar-item :class="{'weui-bar__item_on':$route.path == '/home'}" link="/home">
         <i slot="icon" class="iconfont icon-interactive"></i>
         <span slot="label">微信</span>
       </tabbar-item>
