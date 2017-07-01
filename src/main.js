@@ -10,6 +10,7 @@ import Msg from './common/Msg.js'
 import http from './common/http' 
 import validate from './common/validate' 
 import './assets/style/common.less' 
+import store from './store/'
 
 Object.keys(components).forEach((key) => {
   var name = key.replace(/(\w)/, (v) => v.toUpperCase()) // 首字母大写
@@ -22,6 +23,7 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app-box')

@@ -28,6 +28,13 @@ export default new VueRouter({
     {
       path: '/login',
       component: resolve => require(['../views/login/login.vue'],resolve)
-    }
+    },
+     {
+      path: '/chat',
+      component: resolve => require(['../views/chat/chat.vue'],resolve)
+    },{
+        path: '*', // 其他页面
+        redirect: '/login'
+      }
   ]
 })

@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>vux-chat</title>
   </head>
+  <script src="https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js"></script>
   <body>
     <div id="app-box"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+  	const socket = io.connect('39.108.130.190:3003');
+  	socket.on('news',function(data){
+  		console.log(data)
+  	})
+  </script>
 </html>

@@ -7,10 +7,10 @@ Axios.defaults.timeout = 60000; // 1分钟
 Axios.interceptors.request.use(function (config) {
     // Do something before request is sent 
     //change method for get
-    if(process.env.NODE_ENV == 'development'){
+    /*if(process.env.NODE_ENV == 'development'){
         config['method'] = 'GET';
         console.log(config)
-    }
+    }*/
     Vue.prototype.$showLoading();
     return config;
   }, function (error) {

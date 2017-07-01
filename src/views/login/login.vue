@@ -1,5 +1,6 @@
 <template>
-	<div class="container">
+<!-- <keep-alive> -->
+	<div class="container" id='login'>
 		<div class="bg-div"></div>
 		<div class="content">
 			<div class='login-div'>
@@ -26,10 +27,12 @@
 		</div>
 	
 	</div>
+	<!-- </keep-alive> -->
 </template>
 <script>
 import { XInput, Group ,XButton } from 'vux'
-
+import { mapActions } from 'vuex'
+import { USER_SIGNIN } from '../../store/user'
 export default {
 	components:{
 		XInput,
@@ -46,6 +49,7 @@ export default {
 		}
 	},
 	methods:{
+		...mapActions([USER_SIGNIN]),
 		changeInp (){
 			if(this.inpType == 'password'){
 				this.inpType = 'text';	
@@ -59,13 +63,13 @@ export default {
 					userName:this.userName,
 					password:this.password
 				}	
-				this.$http('/api/login/login',param).then((result) => {
+				this.$http.post('/api/login/login',param).then((result) => {
 				if(result.success){
 					this.$toast('登录成功！');
-					this.$router.replace('/home');	
+					this.USER_SIGNIN(param);
+					this.$router.push('/chat');
 				}else{
 					this.$alert(result.message);
-					this.$router.replace('/home');	
 				}
 			})
 			}else{
@@ -77,6 +81,7 @@ export default {
 }
 </script>
 <style lang="less">
+#login{
 	.bg-div {
 	/* background-color:#000; */
 	position: absolute;
@@ -126,5 +131,6 @@ export default {
 
 .reg-btn {
 	margin-top:1rem;
+}
 }
 </style>
