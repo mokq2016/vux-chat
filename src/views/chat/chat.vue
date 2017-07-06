@@ -1,12 +1,15 @@
 <template>
-	<div class="container" style='height:100%'>
-		<v-headerbar title="发表11">
+	<div class="container" id='chatting'>
+		<div>
+			<v-headerbar title="发表11">
 	  	<!-- <span slot='left'>微信</span> -->
 	  	<!-- <div class="item" slot="right">
 	  	      </div> -->
 	  </v-headerbar>
-	  <view-box ref="viewBox">
-	  	 <div class="content">
+		</div>
+		
+	  <!-- <view-box ref="viewBox"> -->
+	  	 <div class="content" id='content-div'>
 	  	 	<div v-for="item in items" :class="{'row-reverse':item.self == true}" class="flex msg-container-div" style='width:100%'>
 	  	 		<div>
 	  	 			{{item.name}}
@@ -14,7 +17,7 @@
 	  	 		<div class='msg-div' style='width:80%'>{{item.msg}}</div>
 	  	 	</div>
 	  	 </div>
-	  </view-box>
+	 <!--  </view-box> -->
 	  <div class='foot-div'>
 	  	<div class="foot-operate">
 	  	<span>
@@ -49,11 +52,16 @@
 				socket.emit('postMsg', postData);
 				this.$data.items.push(Object.assign(postData,{'self':true}));
 				this.msg = '';
+				this.scollerBottom();
 				
+			},
+			scollerBottom() {
+				let contentDiv = document.querySelector("#content-div");
+				console.log(contentDiv.scrollHeight);
+				contentDiv.scrollTop = contentDiv.scrollHeight;
 			}
 		},
 		mounted (){
-			console.log(new Date())
 			socket.emit('online', this.$store.state.user.userName);
 			socket.on('online',(name) =>{
 				this.$toast(name+" 上线了！");	
@@ -66,14 +74,20 @@
 		}
 	}
 </script>
-<style lang="less" scoped>
-	.container{
+<style lang="less">
+
+	#chatting.container{
+		display: flex;
+		flex-direction:column;
+		height: 100vh;
+		margin-bottom: -50px;
 		.foot-div{
+			align-self:flex-end;
 			background-color: #fff;
 			border-top: 1px solid #ccc;
 			width: 100%;
-			position: fixed;
-			bottom: 0;
+			/* position: fixed;
+			bottom: 0; */
 			.foot-operate {
 				text-align: right;
 				margin: 0.5rem;
@@ -94,7 +108,9 @@
 			}
 		}
 		.content{
-			padding: 0 0.4rem;
+			flex:1;
+			padding: 0 0.4rem 1rem 0.4rem;
+			overflow: auto;
 			.msg-container-div {
 				margin-top: 1rem;
 				.msg-div {
@@ -113,5 +129,9 @@
 			}
 			
 		}
+		.weui-tab__panel{
+		padding-bottom: 0!important;
 	}
+	}
+	
 </style>

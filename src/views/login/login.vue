@@ -1,7 +1,12 @@
 <template>
 <!-- <keep-alive> -->
 	<div class="container" id='login'>
-		<div class="bg-div"></div>
+	  <div id="particles-js" style='background:rgba(0,0,0,0.8)'>
+	  	<canvas class='particles-js-canvas-el' style='width:100%;height:100%' height="160">
+	  		
+	  	</canvas>
+	  </div>
+		<!-- <div class="bg-div"></div> -->
 		<div class="content">
 			<div class='login-div'>
 		<group>
@@ -32,6 +37,7 @@
 <script>
 import { XInput, Group ,XButton } from 'vux'
 import { mapActions } from 'vuex'
+import particles from '../../config/particles'
 import { USER_SIGNIN } from '../../store/user'
 export default {
 	components:{
@@ -76,12 +82,21 @@ export default {
 				this.submitted = true;	
 			}
 			
-		}
+		},
+		startParticle(){
+			}
+	},
+	mounted (){
+		particlesJS('particles-js',particles)
 	}
 }
 </script>
 <style lang="less">
 #login{
+	#particles-js{
+		height: 100vh;
+		z-index: -9999;
+	}
 	.bg-div {
 	/* background-color:#000; */
 	position: absolute;
@@ -91,7 +106,7 @@ export default {
     width: 100%;
     height:100vh;
    /*  opacity:0.3;  */
-    background: url('../../img/login_bg.jpg');
+   /*  background: url('../../img/login_bg.jpg'); */
     background-size:100% 100%;
 
 }
@@ -103,12 +118,12 @@ export default {
     width: 100%;
     color:white;
     height:100vh;
-    background: rgba(0, 0, 0, 0.5);
+   /*  background: rgba(0, 0, 0, 0.5); */
     .login-div{
 	width:96%;
 	margin: 10rem auto 0;
-	border-radius:4rem;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	/* border-radius:4rem; */
+	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 	.iconfont {
 		font-size:1.6rem;
 		color:white;

@@ -26,6 +26,7 @@ export default {
 </script>
 <style lang='less' scoped>
 	.header {
+		align-self:flex-start;
 		font-size:1.2rem;
 		color:white;
 		height:3.1rem;

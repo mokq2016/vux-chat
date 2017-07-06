@@ -27,11 +27,11 @@
       </cell>
     </group>
      
-     <group :title="group.name" v-for="group in groups">
-      <cell :title="val.name" v-for="(val,index) in group.items">
-      	<i slot="icon" class="iconfont icon-people"></i>
-      </cell>
-    </group>
+    <!--  <group :title="group.name" v-for="group in groups">
+     <cell :title="val.name" v-for="(val,index) in group.items">
+     	<i slot="icon" class="iconfont icon-people"></i>
+     </cell>
+        </group> -->
    </view-box>
 	<v-footbar></v-footbar>
 	</div>
